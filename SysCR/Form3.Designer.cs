@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form3));
             this.lblID = new System.Windows.Forms.Label();
             this.lblCPF = new System.Windows.Forms.Label();
             this.lblRG = new System.Windows.Forms.Label();
@@ -268,7 +269,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(377, 363);
+            this.ClientSize = new System.Drawing.Size(372, 363);
             this.Controls.Add(this.btnSalvar);
             this.Controls.Add(this.lblFuncao);
             this.Controls.Add(this.txtFuncao);
@@ -294,6 +295,7 @@
             this.Controls.Add(this.lblRG);
             this.Controls.Add(this.lblCPF);
             this.Controls.Add(this.lblID);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form3";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Cadastro de Funcionário";

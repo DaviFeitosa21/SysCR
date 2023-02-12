@@ -85,6 +85,7 @@
             this.vendasOrçamentosToolStripMenuItem.Name = "vendasOrçamentosToolStripMenuItem";
             this.vendasOrçamentosToolStripMenuItem.Size = new System.Drawing.Size(181, 22);
             this.vendasOrçamentosToolStripMenuItem.Text = "Vendas/Orçamentos";
+            this.vendasOrçamentosToolStripMenuItem.Click += new System.EventHandler(this.vendasOrçamentosToolStripMenuItem_Click);
             // 
             // funcionariosToolStripMenuItem
             // 
@@ -144,6 +145,7 @@
             this.ClientSize = new System.Drawing.Size(1086, 580);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.menuStrip1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

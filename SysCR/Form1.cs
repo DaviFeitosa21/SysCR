@@ -29,5 +29,10 @@ namespace SysCR
             CadastroFuncionario.ShowDialog();
         }
 
+        private void vendasOrçamentosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form4 Vendas = new Form4();
+            Vendas.ShowDialog();
+        }
     }
 }
