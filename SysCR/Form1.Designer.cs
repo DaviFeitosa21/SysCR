@@ -58,7 +58,6 @@
             // 
             // cadastrosToolStripMenuItem
             // 
-            this.cadastrosToolStripMenuItem.BackColor = System.Drawing.SystemColors.AppWorkspace;
             this.cadastrosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.clientesToolStripMenuItem,
             this.funcionariosToolStripMenuItem});
@@ -68,7 +67,6 @@
             // 
             // clientesToolStripMenuItem
             // 
-            this.clientesToolStripMenuItem.BackColor = System.Drawing.SystemColors.AppWorkspace;
             this.clientesToolStripMenuItem.Name = "clientesToolStripMenuItem";
             this.clientesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.clientesToolStripMenuItem.Text = "Clientes";
@@ -76,7 +74,6 @@
             // 
             // orçamentosToolStripMenuItem
             // 
-            this.orçamentosToolStripMenuItem.BackColor = System.Drawing.SystemColors.AppWorkspace;
             this.orçamentosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.vendasOrçamentosToolStripMenuItem});
             this.orçamentosToolStripMenuItem.Name = "orçamentosToolStripMenuItem";
@@ -85,14 +82,12 @@
             // 
             // vendasOrçamentosToolStripMenuItem
             // 
-            this.vendasOrçamentosToolStripMenuItem.BackColor = System.Drawing.SystemColors.AppWorkspace;
             this.vendasOrçamentosToolStripMenuItem.Name = "vendasOrçamentosToolStripMenuItem";
             this.vendasOrçamentosToolStripMenuItem.Size = new System.Drawing.Size(181, 22);
             this.vendasOrçamentosToolStripMenuItem.Text = "Vendas/Orçamentos";
             // 
             // funcionariosToolStripMenuItem
             // 
-            this.funcionariosToolStripMenuItem.BackColor = System.Drawing.SystemColors.AppWorkspace;
             this.funcionariosToolStripMenuItem.Name = "funcionariosToolStripMenuItem";
             this.funcionariosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.funcionariosToolStripMenuItem.Text = "Funcionário";
@@ -146,7 +141,6 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.GrayText;
             this.ClientSize = new System.Drawing.Size(1086, 580);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.menuStrip1);
