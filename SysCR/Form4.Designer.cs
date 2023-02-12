@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form4));
             this.lblID = new System.Windows.Forms.Label();
             this.txtID = new System.Windows.Forms.TextBox();
             this.txtNome = new System.Windows.Forms.TextBox();
@@ -65,16 +66,15 @@
             this.txtNome.Name = "txtNome";
             this.txtNome.Size = new System.Drawing.Size(331, 20);
             this.txtNome.TabIndex = 2;
-            this.txtNome.TextChanged += new System.EventHandler(this.txtNome_TextChanged);
             // 
             // lblNome
             // 
             this.lblNome.AutoSize = true;
             this.lblNome.Location = new System.Drawing.Point(100, 13);
             this.lblNome.Name = "lblNome";
-            this.lblNome.Size = new System.Drawing.Size(38, 13);
+            this.lblNome.Size = new System.Drawing.Size(42, 13);
             this.lblNome.TabIndex = 3;
-            this.lblNome.Text = "Nome:";
+            this.lblNome.Text = "Cliente:";
             // 
             // btnBuscar
             // 
@@ -82,7 +82,7 @@
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.Size = new System.Drawing.Size(24, 20);
             this.btnBuscar.TabIndex = 4;
-            this.btnBuscar.Text = "✜";
+            this.btnBuscar.Text = "☌";
             this.btnBuscar.UseVisualStyleBackColor = false;
             this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
             // 
@@ -169,12 +169,12 @@
             this.Controls.Add(this.txtID);
             this.Controls.Add(this.lblID);
             this.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Form4";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Vendas/Orçamentos";
-            this.Load += new System.EventHandler(this.Form4_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

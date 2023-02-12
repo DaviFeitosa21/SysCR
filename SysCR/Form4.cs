@@ -21,6 +21,7 @@ namespace SysCR
             InitializeComponent();
         }
 
+        //Botão de buscar cliente / Vendas e Orçamentos
         private void btnBuscar_Click(object sender, EventArgs e)
         {
             try
@@ -50,6 +51,25 @@ namespace SysCR
             }
         }
 
+        //Botão de gravar venda / Vendas e Orçamentos
+        private void btnGravarVenda_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Venda gravada com sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            LimparTextBoxVendas();
+        }
+
+        //Método para limpar TextBox ao gravar venda / Vendas e Orçamentos
+        private void LimparTextBoxVendas()
+        {
+            txtID.Text = string.Empty;
+            txtNome.Text = string.Empty;
+            txtProduto.Text = string.Empty;
+            txtQuantProduto.Text = string.Empty;
+            txtValorProduto.Text = string.Empty;
+        }
+
+        //Método para buscar cliente e mostrar na TextBox / Vendas e Orçamentos
         private void carregar_clientes()
         {
             ConexaoVendas = new MySqlConnection(dados_banco);
@@ -77,38 +97,5 @@ namespace SysCR
             }
         }
 
-        private void txtNome_TextChanged(object sender, EventArgs e)
-        {
-            ConexaoVendas = new MySqlConnection(dados_banco);
-
-            ConexaoVendas.Open();
-
-            MySqlCommand cmd = new MySqlCommand();
-
-            cmd.Connection = ConexaoVendas;
-
-            
-        }
-
-        private void Form4_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnGravarVenda_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show("Venda gravada com sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-            LimparTextBoxVendas();
-        }
-
-        private void LimparTextBoxVendas()
-        {
-            txtID.Text = string.Empty;
-            txtNome.Text = string.Empty;
-            txtProduto.Text = string.Empty;
-            txtQuantProduto.Text = string.Empty;
-            txtValorProduto.Text = string.Empty;
-        }
     }
 }

@@ -17,18 +17,21 @@ namespace SysCR
             InitializeComponent();
         }
 
+        //Direcionamento para tela de Cadastro de Clientes
         private void clientesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Form2 CadastroCliente = new Form2();
             CadastroCliente.ShowDialog();
         }
 
+        //Direcionamento para tela de Cadastro de Funcionários
         private void funcionariosToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Form3 CadastroFuncionario = new Form3();
             CadastroFuncionario.ShowDialog();
         }
 
+        //Direcionamento para tela de Vendas/Orçamentos
         private void vendasOrçamentosToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Form4 Vendas = new Form4();

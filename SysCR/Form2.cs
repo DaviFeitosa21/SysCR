@@ -22,12 +22,7 @@ namespace SysCR
             InitializeComponent();
         }
 
-        private void txtNome_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        //Botão de Salvar / Cadastro > Clientes
+        //Botão para salvar cadastro de Clientes / Cadastro de Clientes
         private void btnSalvarCliente_Click(object sender, EventArgs e)
         {
             try
@@ -72,7 +67,7 @@ namespace SysCR
             }
         }
 
-        //Método Limpeza de TextBox do Cadastro de Clientes
+        //Método para limpar TextBox ao Salvar / Cadastro de Clientes
         private void LimparTextBoxCadCliente()
         {
             txtNome.Text = string.Empty;

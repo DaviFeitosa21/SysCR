@@ -21,6 +21,7 @@ namespace SysCR
             InitializeComponent();
         }
 
+        //Botão para salvar cadastro de Funcionário / Cadastro de Funcionários
         private void btnSalvar_Click(object sender, EventArgs e)
         {
 
@@ -69,6 +70,7 @@ namespace SysCR
             }
         }
 
+        //Método para limpar TextBox ao Salvar / Cadastro de Funcionários
         private void LimparTextBoxCadFuncionario()
         {
             txtNome.Text = String.Empty;
