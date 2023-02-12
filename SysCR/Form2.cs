@@ -79,5 +79,12 @@ namespace SysCR
             txtLogin.Text = string.Empty;
             txtSenha.Text = string.Empty;
         }
+        
+        //Direcionamento para tela de Pesquisa Clientes
+        private void btnPesquisaCliente_Click(object sender, EventArgs e)
+        {
+            Form5 PesquisaClientes = new Form5();
+            PesquisaClientes.ShowDialog();
+        }
     }
 }

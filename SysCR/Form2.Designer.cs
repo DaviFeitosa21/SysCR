@@ -48,6 +48,7 @@
             this.lblTelefone2 = new System.Windows.Forms.Label();
             this.txtTelefone2 = new System.Windows.Forms.TextBox();
             this.btnSalvarCliente = new System.Windows.Forms.Button();
+            this.btnPesquisaCliente = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lblNome
@@ -204,11 +205,22 @@
             this.btnSalvarCliente.UseVisualStyleBackColor = true;
             this.btnSalvarCliente.Click += new System.EventHandler(this.btnSalvarCliente_Click);
             // 
+            // btnPesquisaCliente
+            // 
+            this.btnPesquisaCliente.Location = new System.Drawing.Point(397, 25);
+            this.btnPesquisaCliente.Name = "btnPesquisaCliente";
+            this.btnPesquisaCliente.Size = new System.Drawing.Size(75, 21);
+            this.btnPesquisaCliente.TabIndex = 19;
+            this.btnPesquisaCliente.Text = "Pesquisar";
+            this.btnPesquisaCliente.UseVisualStyleBackColor = true;
+            this.btnPesquisaCliente.Click += new System.EventHandler(this.btnPesquisaCliente_Click);
+            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(410, 306);
+            this.ClientSize = new System.Drawing.Size(481, 306);
+            this.Controls.Add(this.btnPesquisaCliente);
             this.Controls.Add(this.btnSalvarCliente);
             this.Controls.Add(this.txtTelefone2);
             this.Controls.Add(this.lblTelefone2);
@@ -240,7 +252,6 @@
         #endregion
 
         private System.Windows.Forms.Label lblNome;
-        private System.Windows.Forms.TextBox txtNome;
         private System.Windows.Forms.Label lblCPF;
         private System.Windows.Forms.TextBox txtCPF;
         private System.Windows.Forms.Label lblRG;
@@ -258,5 +269,7 @@
         private System.Windows.Forms.Label lblTelefone2;
         private System.Windows.Forms.TextBox txtTelefone2;
         private System.Windows.Forms.Button btnSalvarCliente;
+        private System.Windows.Forms.Button btnPesquisaCliente;
+        public System.Windows.Forms.TextBox txtNome;
     }
 }
