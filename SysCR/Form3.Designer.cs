@@ -296,7 +296,7 @@
             this.Controls.Add(this.lblID);
             this.Name = "Form3";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Form3";
+            this.Text = "Cadastro de Funcionário";
             this.ResumeLayout(false);
             this.PerformLayout();
 

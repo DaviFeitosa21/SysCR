@@ -230,7 +230,7 @@
             this.Controls.Add(this.lblNome);
             this.Name = "Form2";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Form2";
+            this.Text = "Cadastro de Cliente";
             this.ResumeLayout(false);
             this.PerformLayout();
 

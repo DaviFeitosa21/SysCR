@@ -28,17 +28,25 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.cadastrosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.clientesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.orçamentosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.vendasOrçamentosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.funcionariosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
+            this.toolStripLabel2 = new System.Windows.Forms.ToolStripLabel();
+            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.menuStrip1.SuspendLayout();
+            this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
             // 
+            this.menuStrip1.BackColor = System.Drawing.SystemColors.AppWorkspace;
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.cadastrosToolStripMenuItem,
             this.orçamentosToolStripMenuItem});
@@ -50,6 +58,7 @@
             // 
             // cadastrosToolStripMenuItem
             // 
+            this.cadastrosToolStripMenuItem.BackColor = System.Drawing.SystemColors.AppWorkspace;
             this.cadastrosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.clientesToolStripMenuItem,
             this.funcionariosToolStripMenuItem});
@@ -59,6 +68,7 @@
             // 
             // clientesToolStripMenuItem
             // 
+            this.clientesToolStripMenuItem.BackColor = System.Drawing.SystemColors.AppWorkspace;
             this.clientesToolStripMenuItem.Name = "clientesToolStripMenuItem";
             this.clientesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.clientesToolStripMenuItem.Text = "Clientes";
@@ -66,6 +76,7 @@
             // 
             // orçamentosToolStripMenuItem
             // 
+            this.orçamentosToolStripMenuItem.BackColor = System.Drawing.SystemColors.AppWorkspace;
             this.orçamentosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.vendasOrçamentosToolStripMenuItem});
             this.orçamentosToolStripMenuItem.Name = "orçamentosToolStripMenuItem";
@@ -74,22 +85,70 @@
             // 
             // vendasOrçamentosToolStripMenuItem
             // 
+            this.vendasOrçamentosToolStripMenuItem.BackColor = System.Drawing.SystemColors.AppWorkspace;
             this.vendasOrçamentosToolStripMenuItem.Name = "vendasOrçamentosToolStripMenuItem";
             this.vendasOrçamentosToolStripMenuItem.Size = new System.Drawing.Size(181, 22);
             this.vendasOrçamentosToolStripMenuItem.Text = "Vendas/Orçamentos";
             // 
             // funcionariosToolStripMenuItem
             // 
+            this.funcionariosToolStripMenuItem.BackColor = System.Drawing.SystemColors.AppWorkspace;
             this.funcionariosToolStripMenuItem.Name = "funcionariosToolStripMenuItem";
             this.funcionariosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.funcionariosToolStripMenuItem.Text = "Funcionário";
             this.funcionariosToolStripMenuItem.Click += new System.EventHandler(this.funcionariosToolStripMenuItem_Click);
             // 
+            // toolStrip1
+            // 
+            this.toolStrip1.BackColor = System.Drawing.SystemColors.AppWorkspace;
+            this.toolStrip1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripLabel1,
+            this.toolStripLabel2,
+            this.toolStripButton1,
+            this.toolStripSeparator1});
+            this.toolStrip1.Location = new System.Drawing.Point(0, 555);
+            this.toolStrip1.Name = "toolStrip1";
+            this.toolStrip1.Size = new System.Drawing.Size(1086, 25);
+            this.toolStrip1.TabIndex = 1;
+            this.toolStrip1.Text = "toolStrip1";
+            // 
+            // toolStripLabel1
+            // 
+            this.toolStripLabel1.Name = "toolStripLabel1";
+            this.toolStripLabel1.Size = new System.Drawing.Size(53, 22);
+            this.toolStripLabel1.Text = "Usuário: ";
+            // 
+            // toolStripLabel2
+            // 
+            this.toolStripLabel2.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.toolStripLabel2.Margin = new System.Windows.Forms.Padding(0, 1, 1, 2);
+            this.toolStripLabel2.Name = "toolStripLabel2";
+            this.toolStripLabel2.Size = new System.Drawing.Size(267, 22);
+            this.toolStripLabel2.Text = "GitHub: https://github.com/DaviFeitosa21/SysCR";
+            // 
+            // toolStripButton1
+            // 
+            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
+            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton1.Name = "toolStripButton1";
+            this.toolStripButton1.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButton1.Text = "toolStripButton1";
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.GrayText;
             this.ClientSize = new System.Drawing.Size(1086, 580);
+            this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
@@ -97,6 +156,8 @@
             this.Text = "Sistema de Venda";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            this.toolStrip1.ResumeLayout(false);
+            this.toolStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -110,6 +171,11 @@
         private System.Windows.Forms.ToolStripMenuItem orçamentosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem vendasOrçamentosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem funcionariosToolStripMenuItem;
+        private System.Windows.Forms.ToolStrip toolStrip1;
+        private System.Windows.Forms.ToolStripLabel toolStripLabel1;
+        private System.Windows.Forms.ToolStripLabel toolStripLabel2;
+        private System.Windows.Forms.ToolStripButton toolStripButton1;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
     }
 }
 

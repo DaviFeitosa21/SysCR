@@ -28,5 +28,6 @@ namespace SysCR
             Form3 CadastroFuncionario = new Form3();
             CadastroFuncionario.ShowDialog();
         }
+
     }
 }
