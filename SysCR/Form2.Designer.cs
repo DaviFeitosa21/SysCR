@@ -218,6 +218,7 @@
             this.lstBuscarContato.Size = new System.Drawing.Size(525, 241);
             this.lstBuscarContato.TabIndex = 19;
             this.lstBuscarContato.UseCompatibleStateImageBehavior = false;
+            this.lstBuscarContato.SelectedIndexChanged += new System.EventHandler(this.lstBuscarContato_SelectedIndexChanged);
             // 
             // txtBuscarCliente
             // 
@@ -253,6 +254,7 @@
             this.btnDeleteCliente.TabIndex = 23;
             this.btnDeleteCliente.Text = "Deletar";
             this.btnDeleteCliente.UseVisualStyleBackColor = true;
+            this.btnDeleteCliente.Click += new System.EventHandler(this.btnDeleteCliente_Click);
             // 
             // btnNovoCliente
             // 

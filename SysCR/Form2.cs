@@ -16,6 +16,7 @@ namespace SysCR
 
         private MySqlConnection ConexaoCliente;
         private string dados_banco = "datasource = localhost; username = root; password = 1234; database = db_sistema";
+        private int ?contatos_alterados = null;
 
         public Form2()
         {
@@ -40,7 +41,7 @@ namespace SysCR
             CarregarClientes();
         }
 
-        //Botão para salvar cadastro de Clientes / Cadastro de Clientes
+        //Botão para salvar e alterar cadastro de Clientes / Cadastro de Clientes
         private void btnSalvarCliente_Click(object sender, EventArgs e)
         {
             try
@@ -53,21 +54,42 @@ namespace SysCR
 
                 cmd.Connection = ConexaoCliente;
 
-                cmd.CommandText = "INSERT INTO cadcliente (nome, cpf, rg, email, telefone1, telefone2, login, senha)" +
-                                  "VALUES (@nome, @cpf, @rg, @email, @telefone1, @telefone2, @login, @senha)";
+                if(contatos_alterados == null)
+                {
+                    cmd.CommandText = "INSERT INTO cadcliente (nome, cpf, rg, email, telefone1, telefone2, login, senha)" +
+                                      "VALUES (@nome, @cpf, @rg, @email, @telefone1, @telefone2, @login, @senha)";
 
-                cmd.Parameters.AddWithValue("@nome", txtNome.Text);
-                cmd.Parameters.AddWithValue("@cpf", txtCPF.Text);
-                cmd.Parameters.AddWithValue("@rg", txtRG.Text);
-                cmd.Parameters.AddWithValue("@email", txtEmail.Text);
-                cmd.Parameters.AddWithValue("@telefone1", txtTelefone1.Text);
-                cmd.Parameters.AddWithValue("@telefone2", txtTelefone2.Text);
-                cmd.Parameters.AddWithValue("@login", txtLogin.Text);
-                cmd.Parameters.AddWithValue("@senha", txtSenha.Text);
+                    cmd.Parameters.AddWithValue("@nome", txtNome.Text);
+                    cmd.Parameters.AddWithValue("@cpf", txtCPF.Text);
+                    cmd.Parameters.AddWithValue("@rg", txtRG.Text);
+                    cmd.Parameters.AddWithValue("@email", txtEmail.Text);
+                    cmd.Parameters.AddWithValue("@telefone1", txtTelefone1.Text);
+                    cmd.Parameters.AddWithValue("@telefone2", txtTelefone2.Text);
+                    cmd.Parameters.AddWithValue("@login", txtLogin.Text);
+                    cmd.Parameters.AddWithValue("@senha", txtSenha.Text);
 
-                cmd.ExecuteNonQuery();
+                    cmd.ExecuteNonQuery();
 
-                MessageBox.Show("Cliente cadastrado com sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Cliente cadastrado com sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    cmd.CommandText = "UPDATE cadcliente SET nome=@nome, cpf=@cpf, rg=@rg, email=@email, telefone1=@telefone1, telefone2=@telefone2, login=@login, senha=@senha)" +
+                                      "WHERE id=@id";
+
+                    cmd.Parameters.AddWithValue("@nome", txtNome.Text);
+                    cmd.Parameters.AddWithValue("@cpf", txtCPF.Text);
+                    cmd.Parameters.AddWithValue("@rg", txtRG.Text);
+                    cmd.Parameters.AddWithValue("@email", txtEmail.Text);
+                    cmd.Parameters.AddWithValue("@telefone1", txtTelefone1.Text);
+                    cmd.Parameters.AddWithValue("@telefone2", txtTelefone2.Text);
+                    cmd.Parameters.AddWithValue("@login", txtLogin.Text);
+                    cmd.Parameters.AddWithValue("@senha", txtSenha.Text);
+
+                    cmd.ExecuteNonQuery();
+
+                    MessageBox.Show("Cliente alterado com sucesso com sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
 
                 LimparTextBoxCadCliente();
             }
@@ -147,6 +169,11 @@ namespace SysCR
             LimparTextBoxCadCliente();
         }
 
+        private void btnDeleteCliente_Click(object sender, EventArgs e)
+        {
+
+        }
+
         //Método para limpar TextBox ao Salvar / Cadastro de Clientes
         private void LimparTextBoxCadCliente()
         {
@@ -214,6 +241,9 @@ namespace SysCR
             }
         }
 
-        
+        private void lstBuscarContato_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
