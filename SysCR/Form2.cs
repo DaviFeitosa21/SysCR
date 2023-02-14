@@ -20,6 +20,24 @@ namespace SysCR
         public Form2()
         {
             InitializeComponent();
+
+            lstBuscarContato.View = View.Details;
+            lstBuscarContato.LabelEdit = true;
+            lstBuscarContato.AllowColumnReorder = true;
+            lstBuscarContato.FullRowSelect = true;
+            lstBuscarContato.GridLines = true;
+
+            lstBuscarContato.Columns.Add("ID", 30, HorizontalAlignment.Left);
+            lstBuscarContato.Columns.Add("Nome", 150, HorizontalAlignment.Left);
+            lstBuscarContato.Columns.Add("CPF", 150, HorizontalAlignment.Left);
+            lstBuscarContato.Columns.Add("RG", 100, HorizontalAlignment.Left);
+            lstBuscarContato.Columns.Add("Email", 150, HorizontalAlignment.Left);
+            lstBuscarContato.Columns.Add("Telefone 1", 90, HorizontalAlignment.Left);
+            lstBuscarContato.Columns.Add("Telefone 2", 90, HorizontalAlignment.Left);
+            lstBuscarContato.Columns.Add("Login", 90, HorizontalAlignment.Left);
+            lstBuscarContato.Columns.Add("Senha", 90,HorizontalAlignment.Left);
+
+            CarregarClientes();
         }
 
         //Botão para salvar cadastro de Clientes / Cadastro de Clientes
@@ -67,6 +85,62 @@ namespace SysCR
             }
         }
 
+        //Botão para buscar cliente e mostrar na ListView / Cadastro de Clientes
+        private void btnBuscarCliente_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                ConexaoCliente = new MySqlConnection(dados_banco);
+
+                ConexaoCliente.Open();
+
+                MySqlCommand cmd = new MySqlCommand();
+
+                cmd.Connection = ConexaoCliente;
+
+                cmd.CommandText = "SELECT * FROM cadcliente WHERE nome LIKE @q OR email LIKE @q";
+
+                cmd.Parameters.AddWithValue("@q", "%" + txtBuscarCliente.Text + "%");
+
+                MySqlDataReader reader = cmd.ExecuteReader();
+
+                lstBuscarContato.Items.Clear();
+
+                while (reader.Read())
+                {
+                    string[] row =
+                    {
+                        reader.GetString(0),
+                        reader.GetString(1),
+                        reader.GetString(2),
+                        reader.GetString(3),
+                        reader.GetString(4),
+                        reader.GetString(5),
+                        reader.GetString(6),
+                        reader.GetString(7),
+
+                    };
+
+                    var clientes_listview = new ListViewItem(row);
+
+                    lstBuscarContato.Items.Add(clientes_listview);
+                }
+
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show("Erro " + ex.Number + " ocorreu: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ocorreu um erro: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                ConexaoCliente.Close();
+            }
+        }
+
         //Método para limpar TextBox ao Salvar / Cadastro de Clientes
         private void LimparTextBoxCadCliente()
         {
@@ -79,12 +153,58 @@ namespace SysCR
             txtLogin.Text = string.Empty;
             txtSenha.Text = string.Empty;
         }
-        
-        //Direcionamento para tela de Pesquisa Clientes
-        private void btnPesquisaCliente_Click(object sender, EventArgs e)
+
+        private void CarregarClientes()
         {
-            Form5 PesquisaClientes = new Form5();
-            PesquisaClientes.ShowDialog();
+            try
+            {
+                ConexaoCliente = new MySqlConnection(dados_banco);
+
+                ConexaoCliente.Open();
+
+                MySqlCommand cmd = new MySqlCommand();
+
+                cmd.Connection = ConexaoCliente;
+
+                cmd.CommandText = "SELECT * FROM cadcliente ORDER BY id ASC";
+
+                MySqlDataReader reader = cmd.ExecuteReader();
+
+                lstBuscarContato.Items.Clear();
+
+                while (reader.Read())
+                {
+                    string[] row =
+                    {
+                        reader.GetString(0),
+                        reader.GetString(1),
+                        reader.GetString(2),
+                        reader.GetString(3),
+                        reader.GetString(4),
+                        reader.GetString(5),
+                        reader.GetString(6),
+                        reader.GetString(7),
+                        
+                    };
+
+                    var clientes_listview = new ListViewItem(row);
+
+                    lstBuscarContato.Items.Add(clientes_listview);
+                }
+
+            }
+            catch(MySqlException ex)
+            {
+                MessageBox.Show("Erro " + ex.Number + " ocorreu: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("Ocorreu um erro: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                ConexaoCliente.Close();
+            }
         }
     }
 }
