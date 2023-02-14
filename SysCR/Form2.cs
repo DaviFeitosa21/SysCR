@@ -74,7 +74,7 @@ namespace SysCR
                 }
                 else
                 {
-                    cmd.CommandText = "UPDATE cadcliente SET nome=@nome, cpf=@cpf, rg=@rg, email=@email, telefone1=@telefone1, telefone2=@telefone2, login=@login, senha=@senha)" +
+                    cmd.CommandText = "UPDATE cadcliente SET nome=@nome, cpf=@cpf, rg=@rg, email=@email, telefone1=@telefone1, telefone2=@telefone2, login=@login, senha=@senha " +
                                       "WHERE id=@id";
 
                     cmd.Parameters.AddWithValue("@nome", txtNome.Text);
@@ -85,6 +85,7 @@ namespace SysCR
                     cmd.Parameters.AddWithValue("@telefone2", txtTelefone2.Text);
                     cmd.Parameters.AddWithValue("@login", txtLogin.Text);
                     cmd.Parameters.AddWithValue("@senha", txtSenha.Text);
+                    cmd.Parameters.AddWithValue("@id", contatos_alterados);
 
                     cmd.ExecuteNonQuery();
 
@@ -92,10 +93,11 @@ namespace SysCR
                 }
 
                 LimparTextBoxCadCliente();
+                CarregarClientes();
             }
             catch(MySqlException ex)
             {
-                MessageBox.Show("Erro" + ex.Number + " ocorreu: " + ex.Message , " Erro! ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Erro " + ex.Number + " ocorreu: " + ex.Message , " Erro! ", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch(Exception ex)
             {
@@ -140,6 +142,7 @@ namespace SysCR
                         reader.GetString(5),
                         reader.GetString(6),
                         reader.GetString(7),
+                        reader.GetString(8)
 
                     };
 
@@ -160,6 +163,27 @@ namespace SysCR
             finally
             {
                 ConexaoCliente.Close();
+            }
+        }
+
+        private void lstBuscarContato_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ListView.SelectedListViewItemCollection itens_selecionados = lstBuscarContato.SelectedItems;
+
+            foreach(ListViewItem item in itens_selecionados)
+            {
+                contatos_alterados = Convert.ToInt32(item.SubItems[0].Text);
+
+                txtNome.Text = item.SubItems[1].Text;
+                txtCPF.Text = item.SubItems[2].Text;
+                txtRG.Text = item.SubItems[3].Text;
+                txtEmail.Text = item.SubItems[4].Text;
+                txtTelefone1.Text = item.SubItems[5].Text;
+                txtTelefone2.Text = item.SubItems[6].Text;
+                txtLogin.Text = item.SubItems[7].Text;
+                txtSenha.Text = item.SubItems[8].Text;
+
+                btnDeleteCliente.Visible = true;
             }
         }
 
@@ -185,6 +209,8 @@ namespace SysCR
             txtTelefone2.Text = string.Empty;
             txtLogin.Text = string.Empty;
             txtSenha.Text = string.Empty;
+
+            btnDeleteCliente.Visible = false;
         }
 
         //Método para Carregar clientes na ListView / Cadastro de Clientes
@@ -218,6 +244,7 @@ namespace SysCR
                         reader.GetString(5),
                         reader.GetString(6),
                         reader.GetString(7),
+                        reader.GetString(8)
                         
                     };
 
@@ -241,9 +268,6 @@ namespace SysCR
             }
         }
 
-        private void lstBuscarContato_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
+        
     }
 }
