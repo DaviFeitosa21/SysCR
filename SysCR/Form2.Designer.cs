@@ -262,6 +262,7 @@
             this.btnNovoCliente.TabIndex = 24;
             this.btnNovoCliente.Text = "Novo";
             this.btnNovoCliente.UseVisualStyleBackColor = true;
+            this.btnNovoCliente.Click += new System.EventHandler(this.btnNovoCliente_Click);
             // 
             // Form2
             // 

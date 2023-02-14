@@ -141,6 +141,12 @@ namespace SysCR
             }
         }
 
+        //Botão para limpar TextBox / Cadastro de Clientes
+        private void btnNovoCliente_Click(object sender, EventArgs e)
+        {
+            LimparTextBoxCadCliente();
+        }
+
         //Método para limpar TextBox ao Salvar / Cadastro de Clientes
         private void LimparTextBoxCadCliente()
         {
@@ -154,6 +160,7 @@ namespace SysCR
             txtSenha.Text = string.Empty;
         }
 
+        //Método para Carregar clientes na ListView / Cadastro de Clientes
         private void CarregarClientes()
         {
             try
@@ -206,5 +213,7 @@ namespace SysCR
                 ConexaoCliente.Close();
             }
         }
+
+        
     }
 }
