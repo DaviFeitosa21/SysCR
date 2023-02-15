@@ -56,6 +56,10 @@
             this.txtFuncao = new System.Windows.Forms.TextBox();
             this.lblFuncao = new System.Windows.Forms.Label();
             this.btnSalvar = new System.Windows.Forms.Button();
+            this.lstBucarFuncionario = new System.Windows.Forms.ListView();
+            this.txtBuscaFuncionario = new System.Windows.Forms.TextBox();
+            this.lblFuncionario = new System.Windows.Forms.Label();
+            this.btnBuscarFuncionario = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lblID
@@ -265,11 +269,50 @@
             this.btnSalvar.UseVisualStyleBackColor = true;
             this.btnSalvar.Click += new System.EventHandler(this.btnSalvar_Click);
             // 
+            // lstBucarFuncionario
+            // 
+            this.lstBucarFuncionario.HideSelection = false;
+            this.lstBucarFuncionario.Location = new System.Drawing.Point(366, 51);
+            this.lstBucarFuncionario.Name = "lstBucarFuncionario";
+            this.lstBucarFuncionario.Size = new System.Drawing.Size(546, 294);
+            this.lstBucarFuncionario.TabIndex = 26;
+            this.lstBucarFuncionario.UseCompatibleStateImageBehavior = false;
+            // 
+            // txtBuscaFuncionario
+            // 
+            this.txtBuscaFuncionario.Location = new System.Drawing.Point(366, 25);
+            this.txtBuscaFuncionario.Name = "txtBuscaFuncionario";
+            this.txtBuscaFuncionario.Size = new System.Drawing.Size(483, 20);
+            this.txtBuscaFuncionario.TabIndex = 27;
+            // 
+            // lblFuncionario
+            // 
+            this.lblFuncionario.AutoSize = true;
+            this.lblFuncionario.Location = new System.Drawing.Point(363, 9);
+            this.lblFuncionario.Name = "lblFuncionario";
+            this.lblFuncionario.Size = new System.Drawing.Size(101, 13);
+            this.lblFuncionario.TabIndex = 28;
+            this.lblFuncionario.Text = "Buscar Funcionário:";
+            // 
+            // btnBuscarFuncionario
+            // 
+            this.btnBuscarFuncionario.Location = new System.Drawing.Point(855, 25);
+            this.btnBuscarFuncionario.Name = "btnBuscarFuncionario";
+            this.btnBuscarFuncionario.Size = new System.Drawing.Size(57, 20);
+            this.btnBuscarFuncionario.TabIndex = 29;
+            this.btnBuscarFuncionario.Text = "Buscar";
+            this.btnBuscarFuncionario.UseVisualStyleBackColor = true;
+            this.btnBuscarFuncionario.Click += new System.EventHandler(this.btnBuscarFuncionario_Click);
+            // 
             // Form3
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(372, 363);
+            this.ClientSize = new System.Drawing.Size(924, 355);
+            this.Controls.Add(this.btnBuscarFuncionario);
+            this.Controls.Add(this.lblFuncionario);
+            this.Controls.Add(this.txtBuscaFuncionario);
+            this.Controls.Add(this.lstBucarFuncionario);
             this.Controls.Add(this.btnSalvar);
             this.Controls.Add(this.lblFuncao);
             this.Controls.Add(this.txtFuncao);
@@ -332,5 +375,9 @@
         private System.Windows.Forms.TextBox txtFuncao;
         private System.Windows.Forms.Label lblFuncao;
         private System.Windows.Forms.Button btnSalvar;
+        private System.Windows.Forms.ListView lstBucarFuncionario;
+        private System.Windows.Forms.TextBox txtBuscaFuncionario;
+        private System.Windows.Forms.Label lblFuncionario;
+        private System.Windows.Forms.Button btnBuscarFuncionario;
     }
 }

@@ -19,6 +19,25 @@ namespace SysCR
         public Form3()
         {
             InitializeComponent();
+
+            lstBucarFuncionario.View = View.Details;
+            lstBucarFuncionario.LabelEdit = true;
+            lstBucarFuncionario.AllowColumnReorder = true;
+            lstBucarFuncionario.FullRowSelect = true;
+            lstBucarFuncionario.GridLines = true;
+
+            lstBucarFuncionario.Columns.Add("id", 30, HorizontalAlignment.Left);
+            lstBucarFuncionario.Columns.Add("Nome", 150, HorizontalAlignment.Left);
+            lstBucarFuncionario.Columns.Add("CPF", 150, HorizontalAlignment.Left);
+            lstBucarFuncionario.Columns.Add("RG", 100, HorizontalAlignment.Left);
+            lstBucarFuncionario.Columns.Add("Idade", 90, HorizontalAlignment.Left);
+            lstBucarFuncionario.Columns.Add("Salário", 90, HorizontalAlignment.Left);
+            lstBucarFuncionario.Columns.Add("Função", 100, HorizontalAlignment.Left);
+            lstBucarFuncionario.Columns.Add("Email", 150, HorizontalAlignment.Left);
+            lstBucarFuncionario.Columns.Add("Telefone 1", 90, HorizontalAlignment.Left);
+            lstBucarFuncionario.Columns.Add("Telefone 2", 90, HorizontalAlignment.Left);
+            lstBucarFuncionario.Columns.Add("Login", 90, HorizontalAlignment.Left);
+            lstBucarFuncionario.Columns.Add("Senha", 90, HorizontalAlignment.Left);
         }
 
         //Botão para salvar cadastro de Funcionário / Cadastro de Funcionários
@@ -70,6 +89,61 @@ namespace SysCR
             }
         }
 
+        private void btnBuscarFuncionario_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                ConexaoFuncionario = new MySqlConnection(dados_banco);
+
+                ConexaoFuncionario.Open();
+
+                MySqlCommand cmd = new MySqlCommand();
+
+                cmd.Connection = ConexaoFuncionario;
+
+                cmd.CommandText = "SELECT * FROM cadfuncionario WHERE nome LIKE @q OR email LIKE @q";
+
+                cmd.Parameters.AddWithValue("@q", "%" + txtBuscaFuncionario.Text + "%");
+
+                MySqlDataReader reader = cmd.ExecuteReader();
+
+                lstBucarFuncionario.Items.Clear();
+
+                while(reader.Read())
+                {
+                    string[] row =
+                    {
+                        reader.GetString(0),
+                        reader.GetString(1),
+                        reader.GetString(2),
+                        reader.GetString(3),
+                        reader.GetString(4),
+                        reader.GetString(5),
+                        reader.GetString(6),
+                        reader.GetString(7),
+                        reader.GetString(8)
+                    };
+
+                    var funcionarios_listview = new ListViewItem(row);
+
+                    lstBucarFuncionario.Items.Add(funcionarios_listview);
+                }
+            }
+            catch(MySqlException ex)
+            {
+                MessageBox.Show("Erro " + ex.Number + " ocorreu: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("Ocorreu um erro: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                ConexaoFuncionario.Close();
+            }
+            
+        }
+
         //Método para limpar TextBox ao Salvar / Cadastro de Funcionários
         private void LimparTextBoxCadFuncionario()
         {
@@ -85,5 +159,7 @@ namespace SysCR
             txtLogin.Text = String.Empty;
             txtSenha.Text = String.Empty;
         }
+
+        
     }
 }

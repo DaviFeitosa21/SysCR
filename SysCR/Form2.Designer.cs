@@ -179,8 +179,11 @@
             // 
             // txtID
             // 
+            this.txtID.HideSelection = false;
             this.txtID.Location = new System.Drawing.Point(12, 26);
             this.txtID.Name = "txtID";
+            this.txtID.ReadOnly = true;
+            this.txtID.ShortcutsEnabled = false;
             this.txtID.Size = new System.Drawing.Size(52, 20);
             this.txtID.TabIndex = 15;
             // 
@@ -202,7 +205,7 @@
             // 
             // btnSalvarCliente
             // 
-            this.btnSalvarCliente.Location = new System.Drawing.Point(151, 270);
+            this.btnSalvarCliente.Location = new System.Drawing.Point(230, 270);
             this.btnSalvarCliente.Name = "btnSalvarCliente";
             this.btnSalvarCliente.Size = new System.Drawing.Size(75, 24);
             this.btnSalvarCliente.TabIndex = 18;
@@ -248,7 +251,7 @@
             // 
             // btnDeleteCliente
             // 
-            this.btnDeleteCliente.Location = new System.Drawing.Point(232, 270);
+            this.btnDeleteCliente.Location = new System.Drawing.Point(149, 270);
             this.btnDeleteCliente.Name = "btnDeleteCliente";
             this.btnDeleteCliente.Size = new System.Drawing.Size(75, 24);
             this.btnDeleteCliente.TabIndex = 23;
@@ -259,7 +262,7 @@
             // 
             // btnNovoCliente
             // 
-            this.btnNovoCliente.Location = new System.Drawing.Point(70, 270);
+            this.btnNovoCliente.Location = new System.Drawing.Point(68, 270);
             this.btnNovoCliente.Name = "btnNovoCliente";
             this.btnNovoCliente.Size = new System.Drawing.Size(75, 24);
             this.btnNovoCliente.TabIndex = 24;

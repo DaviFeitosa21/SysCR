@@ -130,7 +130,7 @@ namespace SysCR
 
                 lstBuscarContato.Items.Clear();
 
-                while (reader.Read())
+                while(reader.Read())
                 {
                     string[] row =
                     {
@@ -166,6 +166,7 @@ namespace SysCR
             }
         }
 
+        //Método para mostrar as informações dos clientes nas TextBox / Cadastro de Clientes
         private void lstBuscarContato_SelectedIndexChanged(object sender, EventArgs e)
         {
             ListView.SelectedListViewItemCollection itens_selecionados = lstBuscarContato.SelectedItems;
@@ -174,6 +175,7 @@ namespace SysCR
             {
                 contatos_alterados = Convert.ToInt32(item.SubItems[0].Text);
 
+                txtID.Text = item.SubItems[0].Text;
                 txtNome.Text = item.SubItems[1].Text;
                 txtCPF.Text = item.SubItems[2].Text;
                 txtRG.Text = item.SubItems[3].Text;
