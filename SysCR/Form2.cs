@@ -16,7 +16,7 @@ namespace SysCR
 
         private MySqlConnection ConexaoCliente;
         private string dados_banco = "datasource = localhost; username = root; password = 1234; database = db_sistema";
-        private int ?contatos_alterados = null;
+        private int ?clientes_alterados = null;
 
         public Form2()
         {
@@ -54,7 +54,7 @@ namespace SysCR
 
                 cmd.Connection = ConexaoCliente;
 
-                if(contatos_alterados == null)
+                if(clientes_alterados == null)
                 {
                     cmd.CommandText = "INSERT INTO cadcliente (nome, cpf, rg, email, telefone1, telefone2, login, senha)" +
                                       "VALUES (@nome, @cpf, @rg, @email, @telefone1, @telefone2, @login, @senha)";
@@ -85,7 +85,7 @@ namespace SysCR
                     cmd.Parameters.AddWithValue("@telefone2", txtTelefone2.Text);
                     cmd.Parameters.AddWithValue("@login", txtLogin.Text);
                     cmd.Parameters.AddWithValue("@senha", txtSenha.Text);
-                    cmd.Parameters.AddWithValue("@id", contatos_alterados);
+                    cmd.Parameters.AddWithValue("@id", clientes_alterados);
 
                     cmd.ExecuteNonQuery();
 
@@ -122,7 +122,7 @@ namespace SysCR
 
                 cmd.Connection = ConexaoCliente;
 
-                cmd.CommandText = "SELECT * FROM cadcliente WHERE nome LIKE @q OR email LIKE @q";
+                cmd.CommandText = "SELECT * FROM cadcliente WHERE nome LIKE @q";
 
                 cmd.Parameters.AddWithValue("@q", "%" + txtBuscarCliente.Text + "%");
 
@@ -143,7 +143,6 @@ namespace SysCR
                         reader.GetString(6),
                         reader.GetString(7),
                         reader.GetString(8)
-
                     };
 
                     var clientes_listview = new ListViewItem(row);
@@ -173,7 +172,7 @@ namespace SysCR
 
             foreach(ListViewItem item in itens_selecionados)
             {
-                contatos_alterados = Convert.ToInt32(item.SubItems[0].Text);
+                clientes_alterados = Convert.ToInt32(item.SubItems[0].Text);
 
                 txtID.Text = item.SubItems[0].Text;
                 txtNome.Text = item.SubItems[1].Text;
@@ -195,9 +194,50 @@ namespace SysCR
             LimparTextBoxCadCliente();
         }
 
+        //Botão para deletar clientes / Cadastro de Clientes
         private void btnDeleteCliente_Click(object sender, EventArgs e)
         {
+            try
+            {
+                DialogResult confirmar = MessageBox.Show("Tem certeza que deseja excluir o registro?", "Tem Certeza?", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
+                if(confirmar == DialogResult.Yes)
+                {
+
+                    ConexaoCliente = new MySqlConnection(dados_banco);
+
+                    ConexaoCliente.Open();
+
+                    MySqlCommand cmd = new MySqlCommand();
+
+                    cmd.Connection = ConexaoCliente;
+
+                    cmd.CommandText = "DELETE FROM cadcliente WHERE id=@id";
+
+                    cmd.Parameters.AddWithValue("@id", clientes_alterados);
+
+                    cmd.ExecuteNonQuery();
+
+                    MessageBox.Show("Cliente removido com sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    CarregarClientes();
+
+                    LimparTextBoxCadCliente();
+
+                }
+            }
+            catch(MySqlException ex)
+            {
+                MessageBox.Show("Erro " + ex.Number + " ocorreu: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("Ocorreu um erro: " + ex.Message , "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                ConexaoCliente.Close();
+            }
         }
 
         //Método para limpar TextBox ao Salvar / Cadastro de Clientes

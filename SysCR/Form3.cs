@@ -38,6 +38,8 @@ namespace SysCR
             lstBucarFuncionario.Columns.Add("Telefone 2", 90, HorizontalAlignment.Left);
             lstBucarFuncionario.Columns.Add("Login", 90, HorizontalAlignment.Left);
             lstBucarFuncionario.Columns.Add("Senha", 90, HorizontalAlignment.Left);
+
+            carregar_funcionarios();
         }
 
         //Botão para salvar cadastro de Funcionário / Cadastro de Funcionários
@@ -89,6 +91,7 @@ namespace SysCR
             }
         }
 
+        //Botão para buscar funcionário e mostrar na ListView / Cadastro de Funcionários
         private void btnBuscarFuncionario_Click(object sender, EventArgs e)
         {
             try
@@ -101,7 +104,7 @@ namespace SysCR
 
                 cmd.Connection = ConexaoFuncionario;
 
-                cmd.CommandText = "SELECT * FROM cadfuncionario WHERE nome LIKE @q OR email LIKE @q";
+                cmd.CommandText = "SELECT * FROM cadfuncionario WHERE nome LIKE @q";
 
                 cmd.Parameters.AddWithValue("@q", "%" + txtBuscaFuncionario.Text + "%");
 
@@ -121,7 +124,10 @@ namespace SysCR
                         reader.GetString(5),
                         reader.GetString(6),
                         reader.GetString(7),
-                        reader.GetString(8)
+                        reader.GetString(8),
+                        reader.GetString(9),
+                        reader.GetString(10),
+                        reader.GetString(11)
                     };
 
                     var funcionarios_listview = new ListViewItem(row);
@@ -144,9 +150,36 @@ namespace SysCR
             
         }
 
+        private void lstBucarFuncionario_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ListView.SelectedListViewItemCollection itens_selecionados = lstBucarFuncionario.SelectedItems;
+
+            foreach(ListViewItem item in itens_selecionados)
+            {
+                txtID.Text = item.SubItems[0].Text;
+                txtNome.Text = item.SubItems[1].Text;
+                txtCPF.Text = item.SubItems[2].Text;
+                txtRG.Text = item.SubItems[3].Text;
+                txtIdade.Text = item.SubItems[4].Text;
+                txtSalario.Text = item.SubItems[5].Text;
+                txtFuncao.Text = item.SubItems[6].Text;
+                txtEmail.Text = item.SubItems[7].Text;
+                txtTelefone1.Text = item.SubItems[8].Text;
+                txtTelefone2.Text = item.SubItems[9].Text;
+                txtLogin.Text = item.SubItems[10].Text;
+                txtSenha.Text = item.SubItems[11].Text;
+            }
+        }
+
+        private void btnNovoFuncionario_Click(object sender, EventArgs e)
+        {
+            LimparTextBoxCadFuncionario();
+        }
+
         //Método para limpar TextBox ao Salvar / Cadastro de Funcionários
         private void LimparTextBoxCadFuncionario()
         {
+            txtID.Text = String.Empty;
             txtNome.Text = String.Empty;
             txtCPF.Text = String.Empty;
             txtRG.Text = String.Empty;
@@ -160,6 +193,61 @@ namespace SysCR
             txtSenha.Text = String.Empty;
         }
 
-        
+        private void carregar_funcionarios()
+        {
+            try
+            {
+                ConexaoFuncionario = new MySqlConnection(dados_banco);
+
+                ConexaoFuncionario.Open();
+
+                MySqlCommand cmd = new MySqlCommand();
+
+                cmd.Connection = ConexaoFuncionario;
+
+                cmd.CommandText = "SELECT * FROM cadfuncionario ORDER BY id ASC";
+
+                MySqlDataReader reader = cmd.ExecuteReader();
+
+                lstBucarFuncionario.Items.Clear();
+
+                while (reader.Read())
+                {
+                    string[] row =
+                    {
+                        reader.GetString(0),
+                        reader.GetString(1),
+                        reader.GetString(2),
+                        reader.GetString(3),
+                        reader.GetString(4),
+                        reader.GetString(5),
+                        reader.GetString(6),
+                        reader.GetString(7),
+                        reader.GetString(8),
+                        reader.GetString(9),
+                        reader.GetString(10),
+                        reader.GetString(11)
+                    };
+
+                    var funcionarios_listview2 = new ListViewItem(row);
+
+                    lstBucarFuncionario.Items.Add(funcionarios_listview2);
+                }
+            }
+            catch(MySqlException ex)
+            {
+                MessageBox.Show("Erro " + ex.Number + " ocorreu: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("Ocorreu um erro: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                ConexaoFuncionario.Close();
+            }
+        }
+
+       
     }
 }

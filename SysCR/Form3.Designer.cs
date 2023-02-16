@@ -55,11 +55,13 @@
             this.txtSalario = new System.Windows.Forms.TextBox();
             this.txtFuncao = new System.Windows.Forms.TextBox();
             this.lblFuncao = new System.Windows.Forms.Label();
-            this.btnSalvar = new System.Windows.Forms.Button();
+            this.btnSalvarFuncionario = new System.Windows.Forms.Button();
             this.lstBucarFuncionario = new System.Windows.Forms.ListView();
             this.txtBuscaFuncionario = new System.Windows.Forms.TextBox();
             this.lblFuncionario = new System.Windows.Forms.Label();
             this.btnBuscarFuncionario = new System.Windows.Forms.Button();
+            this.btnDeleteFuncionario = new System.Windows.Forms.Button();
+            this.btnNovoFuncionario = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lblID
@@ -116,6 +118,7 @@
             // 
             this.txtID.Location = new System.Drawing.Point(12, 25);
             this.txtID.Name = "txtID";
+            this.txtID.ReadOnly = true;
             this.txtID.Size = new System.Drawing.Size(55, 20);
             this.txtID.TabIndex = 6;
             // 
@@ -259,15 +262,15 @@
             this.lblFuncao.TabIndex = 24;
             this.lblFuncao.Text = "Função:";
             // 
-            // btnSalvar
+            // btnSalvarFuncionario
             // 
-            this.btnSalvar.Location = new System.Drawing.Point(285, 322);
-            this.btnSalvar.Name = "btnSalvar";
-            this.btnSalvar.Size = new System.Drawing.Size(75, 23);
-            this.btnSalvar.TabIndex = 25;
-            this.btnSalvar.Text = "Salvar";
-            this.btnSalvar.UseVisualStyleBackColor = true;
-            this.btnSalvar.Click += new System.EventHandler(this.btnSalvar_Click);
+            this.btnSalvarFuncionario.Location = new System.Drawing.Point(206, 320);
+            this.btnSalvarFuncionario.Name = "btnSalvarFuncionario";
+            this.btnSalvarFuncionario.Size = new System.Drawing.Size(75, 23);
+            this.btnSalvarFuncionario.TabIndex = 25;
+            this.btnSalvarFuncionario.Text = "Salvar";
+            this.btnSalvarFuncionario.UseVisualStyleBackColor = true;
+            this.btnSalvarFuncionario.Click += new System.EventHandler(this.btnSalvar_Click);
             // 
             // lstBucarFuncionario
             // 
@@ -277,6 +280,7 @@
             this.lstBucarFuncionario.Size = new System.Drawing.Size(546, 294);
             this.lstBucarFuncionario.TabIndex = 26;
             this.lstBucarFuncionario.UseCompatibleStateImageBehavior = false;
+            this.lstBucarFuncionario.SelectedIndexChanged += new System.EventHandler(this.lstBucarFuncionario_SelectedIndexChanged);
             // 
             // txtBuscaFuncionario
             // 
@@ -304,16 +308,37 @@
             this.btnBuscarFuncionario.UseVisualStyleBackColor = true;
             this.btnBuscarFuncionario.Click += new System.EventHandler(this.btnBuscarFuncionario_Click);
             // 
+            // btnDeleteFuncionario
+            // 
+            this.btnDeleteFuncionario.Location = new System.Drawing.Point(125, 320);
+            this.btnDeleteFuncionario.Name = "btnDeleteFuncionario";
+            this.btnDeleteFuncionario.Size = new System.Drawing.Size(75, 23);
+            this.btnDeleteFuncionario.TabIndex = 30;
+            this.btnDeleteFuncionario.Text = "Delete";
+            this.btnDeleteFuncionario.UseVisualStyleBackColor = true;
+            // 
+            // btnNovoFuncionario
+            // 
+            this.btnNovoFuncionario.Location = new System.Drawing.Point(44, 320);
+            this.btnNovoFuncionario.Name = "btnNovoFuncionario";
+            this.btnNovoFuncionario.Size = new System.Drawing.Size(75, 23);
+            this.btnNovoFuncionario.TabIndex = 31;
+            this.btnNovoFuncionario.Text = "Novo";
+            this.btnNovoFuncionario.UseVisualStyleBackColor = true;
+            this.btnNovoFuncionario.Click += new System.EventHandler(this.btnNovoFuncionario_Click);
+            // 
             // Form3
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(924, 355);
+            this.Controls.Add(this.btnNovoFuncionario);
+            this.Controls.Add(this.btnDeleteFuncionario);
             this.Controls.Add(this.btnBuscarFuncionario);
             this.Controls.Add(this.lblFuncionario);
             this.Controls.Add(this.txtBuscaFuncionario);
             this.Controls.Add(this.lstBucarFuncionario);
-            this.Controls.Add(this.btnSalvar);
+            this.Controls.Add(this.btnSalvarFuncionario);
             this.Controls.Add(this.lblFuncao);
             this.Controls.Add(this.txtFuncao);
             this.Controls.Add(this.txtSalario);
@@ -374,10 +399,12 @@
         private System.Windows.Forms.TextBox txtSalario;
         private System.Windows.Forms.TextBox txtFuncao;
         private System.Windows.Forms.Label lblFuncao;
-        private System.Windows.Forms.Button btnSalvar;
+        private System.Windows.Forms.Button btnSalvarFuncionario;
         private System.Windows.Forms.ListView lstBucarFuncionario;
         private System.Windows.Forms.TextBox txtBuscaFuncionario;
         private System.Windows.Forms.Label lblFuncionario;
         private System.Windows.Forms.Button btnBuscarFuncionario;
+        private System.Windows.Forms.Button btnDeleteFuncionario;
+        private System.Windows.Forms.Button btnNovoFuncionario;
     }
 }
