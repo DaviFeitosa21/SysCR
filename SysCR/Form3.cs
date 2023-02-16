@@ -15,6 +15,7 @@ namespace SysCR
     {
         private MySqlConnection ConexaoFuncionario;
         private string dados_banco = "datasource = localhost; username = root; password = 1234; database = db_sistema";
+        private int ?funcionarios_alterados = null;
 
         public Form3()
         {
@@ -56,26 +57,51 @@ namespace SysCR
 
                 cmd.Connection = ConexaoFuncionario;
 
-                cmd.CommandText = "INSERT INTO cadfuncionario(nome, cpf, rg, idade, salario, funcao, email, telefone1, telefone2, login, senha)" +
-                                  "VALUES (@nome, @cpf, @rg, @idade, @salario, @funcao, @email, @telefone1, @telefone2, @login, @senha)";
+                if (funcionarios_alterados == null)
+                {
+                    cmd.CommandText = "INSERT INTO cadfuncionario(nome, cpf, rg, idade, salario, funcao, email, telefone1, telefone2, login, senha)" +
+                                      "VALUES (@nome, @cpf, @rg, @idade, @salario, @funcao, @email, @telefone1, @telefone2, @login, @senha)";
 
-                cmd.Parameters.AddWithValue("@nome", txtNome.Text);
-                cmd.Parameters.AddWithValue("@cpf", txtCPF.Text);
-                cmd.Parameters.AddWithValue("@rg", txtRG.Text);
-                cmd.Parameters.AddWithValue("@idade", txtIdade.Text);
-                cmd.Parameters.AddWithValue("@salario", txtSalario.Text);
-                cmd.Parameters.AddWithValue("@funcao", txtFuncao.Text);
-                cmd.Parameters.AddWithValue("@email", txtEmail.Text);
-                cmd.Parameters.AddWithValue("@telefone1", txtTelefone1.Text);
-                cmd.Parameters.AddWithValue("@telefone2", txtTelefone2.Text);
-                cmd.Parameters.AddWithValue("@login", txtLogin.Text);
-                cmd.Parameters.AddWithValue("@senha", txtSenha.Text);
+                    cmd.Parameters.AddWithValue("@nome", txtNome.Text);
+                    cmd.Parameters.AddWithValue("@cpf", txtCPF.Text);
+                    cmd.Parameters.AddWithValue("@rg", txtRG.Text);
+                    cmd.Parameters.AddWithValue("@idade", txtIdade.Text);
+                    cmd.Parameters.AddWithValue("@salario", txtSalario.Text);
+                    cmd.Parameters.AddWithValue("@funcao", txtFuncao.Text);
+                    cmd.Parameters.AddWithValue("@email", txtEmail.Text);
+                    cmd.Parameters.AddWithValue("@telefone1", txtTelefone1.Text);
+                    cmd.Parameters.AddWithValue("@telefone2", txtTelefone2.Text);
+                    cmd.Parameters.AddWithValue("@login", txtLogin.Text);
+                    cmd.Parameters.AddWithValue("@senha", txtSenha.Text);
 
-                cmd.ExecuteNonQuery();
+                    cmd.ExecuteNonQuery();
 
-                MessageBox.Show("Funcionário cadastrado com sucesso! ", " Sucesso! ", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Funcionário cadastrado com sucesso! ", " Sucesso! ", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    cmd.CommandText = "UPDATE cadfuncionario SET nome=@nome, cpf=@cpf, rg=@rg, idade=@idade, salario=@salario, funcao=@funcao, email=@email, telefone1=@telefone1, telefone2=@telefone2, login=@login, senha=@senha" +
+                                      "WHERE id=@id";
+
+                    cmd.Parameters.AddWithValue("@nome", txtNome.Text);
+                    cmd.Parameters.AddWithValue("@cpf", txtCPF.Text);
+                    cmd.Parameters.AddWithValue("@rg", txtRG.Text);
+                    cmd.Parameters.AddWithValue("@idade", txtIdade.Text);
+                    cmd.Parameters.AddWithValue("@salario", txtSalario.Text);
+                    cmd.Parameters.AddWithValue("@funcao", txtFuncao.Text);
+                    cmd.Parameters.AddWithValue("@email", txtEmail.Text);
+                    cmd.Parameters.AddWithValue("@telefone1", txtTelefone1.Text);
+                    cmd.Parameters.AddWithValue("@telefone2", txtTelefone2.Text);
+                    cmd.Parameters.AddWithValue("@login", txtLogin.Text);
+                    cmd.Parameters.AddWithValue("@senha", txtSenha.Text);
+
+                    cmd.ExecuteNonQuery();
+
+                    MessageBox.Show("Funcionário atualizado com sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
 
                 LimparTextBoxCadFuncionario();
+                carregar_funcionarios();
             }
             catch(MySqlException ex)
             {
@@ -150,12 +176,15 @@ namespace SysCR
             
         }
 
+        //Método para mostrar informações dos funcionários na TextBox / Cadastro de Funcionários
         private void lstBucarFuncionario_SelectedIndexChanged(object sender, EventArgs e)
         {
             ListView.SelectedListViewItemCollection itens_selecionados = lstBucarFuncionario.SelectedItems;
 
             foreach(ListViewItem item in itens_selecionados)
             {
+                funcionario_alterados = Convert.ToInt32(item.SubItems[0].Text);
+
                 txtID.Text = item.SubItems[0].Text;
                 txtNome.Text = item.SubItems[1].Text;
                 txtCPF.Text = item.SubItems[2].Text;
@@ -171,6 +200,50 @@ namespace SysCR
             }
         }
 
+        private void btnDeleteFuncionario_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                DialogResult confirmar = MessageBox.Show("Tem certeza que deseja excluir o registro?", "Tem Certeza?", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+                if(confirmar == DialogResult.Yes)
+                {
+                    ConexaoFuncionario = new MySqlConnection(dados_banco);
+
+                    ConexaoFuncionario.Open();
+
+                    MySqlCommand cmd = new MySqlCommand();
+
+                    cmd.Connection = ConexaoFuncionario;
+
+                    cmd.CommandText = "DELETE FROM cadfuncionario WHERE id=@id";
+
+                    cmd.ParametersAddWithValue("@id", funcionarios_alterados);
+
+                    cmd.ExecuteNonQuery();
+
+                    MessageBox.Show("Funcionário removido com sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    LimparTextBoxCadFuncionario();
+                    carregar_funcionarios();
+                }
+            }
+            catch(MySqlException ex)
+            {
+                MessageBox.Show("Erro " + ex.Number + " ocorreu: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("Ocorreu um erro: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                ConexaoFuncionario.Close();
+            }
+
+        }
+
+        //Botão para Limpar TextBox / Cadastro de Funcionário
         private void btnNovoFuncionario_Click(object sender, EventArgs e)
         {
             LimparTextBoxCadFuncionario();
@@ -193,6 +266,7 @@ namespace SysCR
             txtSenha.Text = String.Empty;
         }
 
+        //Método para carregar funcionários na ListView / Cadastro de Funcionário
         private void carregar_funcionarios()
         {
             try

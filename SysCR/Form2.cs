@@ -165,7 +165,7 @@ namespace SysCR
             }
         }
 
-        //Método para mostrar as informações dos clientes nas TextBox / Cadastro de Clientes
+        //Método para mostrar informações dos clientes nas TextBox / Cadastro de Clientes
         private void lstBuscarContato_SelectedIndexChanged(object sender, EventArgs e)
         {
             ListView.SelectedListViewItemCollection itens_selecionados = lstBuscarContato.SelectedItems;
@@ -223,7 +223,6 @@ namespace SysCR
                     CarregarClientes();
 
                     LimparTextBoxCadCliente();
-
                 }
             }
             catch(MySqlException ex)

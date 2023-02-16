@@ -316,6 +316,7 @@
             this.btnDeleteFuncionario.TabIndex = 30;
             this.btnDeleteFuncionario.Text = "Delete";
             this.btnDeleteFuncionario.UseVisualStyleBackColor = true;
+            this.btnDeleteFuncionario.Click += new System.EventHandler(this.btnDeleteFuncionario_Click);
             // 
             // btnNovoFuncionario
             // 
