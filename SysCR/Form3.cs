@@ -94,6 +94,7 @@ namespace SysCR
                     cmd.Parameters.AddWithValue("@telefone2", txtTelefone2.Text);
                     cmd.Parameters.AddWithValue("@login", txtLogin.Text);
                     cmd.Parameters.AddWithValue("@senha", txtSenha.Text);
+                    cmd.Parameters.AddWithValue("@id", funcionarios_alterados);
 
                     cmd.ExecuteNonQuery();
 
@@ -183,7 +184,7 @@ namespace SysCR
 
             foreach(ListViewItem item in itens_selecionados)
             {
-                funcionario_alterados = Convert.ToInt32(item.SubItems[0].Text);
+                funcionarios_alterados = Convert.ToInt32(item.SubItems[0].Text);
 
                 txtID.Text = item.SubItems[0].Text;
                 txtNome.Text = item.SubItems[1].Text;
