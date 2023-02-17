@@ -46,7 +46,6 @@ namespace SysCR
         //Botão para salvar cadastro de Funcionário / Cadastro de Funcionários
         private void btnSalvar_Click(object sender, EventArgs e)
         {
-
             try
             {
                 ConexaoFuncionario = new MySqlConnection(dados_banco);
@@ -80,7 +79,7 @@ namespace SysCR
                 }
                 else
                 {
-                    cmd.CommandText = "UPDATE cadfuncionario SET nome=@nome, cpf=@cpf, rg=@rg, idade=@idade, salario=@salario, funcao=@funcao, email=@email, telefone1=@telefone1, telefone2=@telefone2, login=@login, senha=@senha" +
+                    cmd.CommandText = "UPDATE cadfuncionario SET nome=@nome, cpf=@cpf, rg=@rg, idade=@idade, salario=@salario, funcao=@funcao, email=@email, telefone1=@telefone1, telefone2=@telefone2, login=@login, senha=@senha " + 
                                       "WHERE id=@id";
 
                     cmd.Parameters.AddWithValue("@nome", txtNome.Text);
@@ -219,7 +218,7 @@ namespace SysCR
 
                     cmd.CommandText = "DELETE FROM cadfuncionario WHERE id=@id";
 
-                    cmd.ParametersAddWithValue("@id", funcionarios_alterados);
+                    cmd.Parameters.AddWithValue("@id", funcionarios_alterados);
 
                     cmd.ExecuteNonQuery();
 
