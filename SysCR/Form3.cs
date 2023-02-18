@@ -197,9 +197,12 @@ namespace SysCR
                 txtTelefone2.Text = item.SubItems[9].Text;
                 txtLogin.Text = item.SubItems[10].Text;
                 txtSenha.Text = item.SubItems[11].Text;
+
+                btnDeleteFuncionario.Visible = true;
             }
         }
 
+        //Botão para deletar funcionários / Cadastro de Funcionários
         private void btnDeleteFuncionario_Click(object sender, EventArgs e)
         {
             try
@@ -264,6 +267,8 @@ namespace SysCR
             txtTelefone2.Text = String.Empty;
             txtLogin.Text = String.Empty;
             txtSenha.Text = String.Empty;
+
+            btnDeleteFuncionario.Visible = false;
         }
 
         //Método para carregar funcionários na ListView / Cadastro de Funcionário

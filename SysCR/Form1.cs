@@ -37,5 +37,16 @@ namespace SysCR
             Form4 Vendas = new Form4();
             Vendas.ShowDialog();
         }
+
+        private void lblhoras_Paint(object sender, PaintEventArgs e)
+        {
+            
+            lblhoras.Text = DateTime.Now.ToString("dd/MM/yyyy hh:mm:ss");
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            lblhoras.Text = (DateTime.Now.ToString("hh:mm:ss"));
+        }
     }
 }
