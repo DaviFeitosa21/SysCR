@@ -38,6 +38,13 @@ namespace SysCR
             Vendas.ShowDialog();
         }
 
+        //Direcionamento para a tela Sobre
+        private void sobreToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form5 Sobre = new Form5();
+            Sobre.ShowDialog();
+        }
+
         //Comando para mostrar horas dentro do sistema
         private void lblhoras_Paint(object sender, PaintEventArgs e)
         {
@@ -52,6 +59,13 @@ namespace SysCR
         private void calculadoraToolStripMenuItem_Click(object sender, EventArgs e)
         {
             System.Diagnostics.Process.Start("calc");
+        }
+
+        private void toolStripLabel2_Click(object sender, EventArgs e)
+        {
+            string link = "https://github.com/DaviFeitosa21/SysCR";
+
+            System.Diagnostics.Process.Start(link);
         }
     }
 }

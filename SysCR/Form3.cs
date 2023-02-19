@@ -97,7 +97,7 @@ namespace SysCR
 
                     cmd.ExecuteNonQuery();
 
-                    MessageBox.Show("Funcionário atualizado com sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Funcionário alterado com sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
 
                 LimparTextBoxCadFuncionario();
@@ -255,6 +255,8 @@ namespace SysCR
         //Método para limpar TextBox ao Salvar / Cadastro de Funcionários
         private void LimparTextBoxCadFuncionario()
         {
+            funcionarios_alterados = null;
+
             txtID.Text = String.Empty;
             txtNome.Text = String.Empty;
             txtCPF.Text = String.Empty;

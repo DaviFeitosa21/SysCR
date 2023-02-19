@@ -16,7 +16,7 @@ namespace SysCR
 
         private MySqlConnection ConexaoCliente;
         private string dados_banco = "datasource = localhost; username = root; password = 1234; database = db_sistema";
-        private int ?clientes_alterados = null;
+        public int ?clientes_alterados = null;
 
         public Form2()
         {
@@ -42,7 +42,7 @@ namespace SysCR
         }
 
         //Botão para salvar e alterar cadastro de Clientes / Cadastro de Clientes
-        private void btnSalvarCliente_Click(object sender, EventArgs e)
+        public void btnSalvarCliente_Click(object sender, EventArgs e)
         {
             try
             {
@@ -242,6 +242,8 @@ namespace SysCR
         //Método para limpar TextBox ao Salvar / Cadastro de Clientes
         private void LimparTextBoxCadCliente()
         {
+            clientes_alterados = null;
+
             txtNome.Text = string.Empty;
             txtCPF.Text = string.Empty;
             txtRG.Text = string.Empty;

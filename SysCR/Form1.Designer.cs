@@ -30,12 +30,17 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            SysCR.Properties.Settings settings1 = new SysCR.Properties.Settings();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.cadastrosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.clientesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.funcionariosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.orçamentosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.vendasOrçamentosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.relatóriosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.relatorioDeClientesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.calculadoraToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.sobreToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
             this.toolStripLabel2 = new System.Windows.Forms.ToolStripLabel();
@@ -43,7 +48,6 @@
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.lblhoras = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.calculadoraToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -54,7 +58,9 @@
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.cadastrosToolStripMenuItem,
             this.orçamentosToolStripMenuItem,
-            this.calculadoraToolStripMenuItem});
+            this.relatóriosToolStripMenuItem,
+            this.calculadoraToolStripMenuItem,
+            this.sobreToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1086, 24);
@@ -99,6 +105,34 @@
             this.vendasOrçamentosToolStripMenuItem.Text = "Vendas/Orçamentos";
             this.vendasOrçamentosToolStripMenuItem.Click += new System.EventHandler(this.vendasOrçamentosToolStripMenuItem_Click);
             // 
+            // relatóriosToolStripMenuItem
+            // 
+            this.relatóriosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.relatorioDeClientesToolStripMenuItem});
+            this.relatóriosToolStripMenuItem.Name = "relatóriosToolStripMenuItem";
+            this.relatóriosToolStripMenuItem.Size = new System.Drawing.Size(71, 20);
+            this.relatóriosToolStripMenuItem.Text = "Relatórios";
+            // 
+            // relatorioDeClientesToolStripMenuItem
+            // 
+            this.relatorioDeClientesToolStripMenuItem.Name = "relatorioDeClientesToolStripMenuItem";
+            this.relatorioDeClientesToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
+            this.relatorioDeClientesToolStripMenuItem.Text = "Relatório de Clientes";
+            // 
+            // calculadoraToolStripMenuItem
+            // 
+            this.calculadoraToolStripMenuItem.Name = "calculadoraToolStripMenuItem";
+            this.calculadoraToolStripMenuItem.Size = new System.Drawing.Size(82, 20);
+            this.calculadoraToolStripMenuItem.Text = "Calculadora";
+            this.calculadoraToolStripMenuItem.Click += new System.EventHandler(this.calculadoraToolStripMenuItem_Click);
+            // 
+            // sobreToolStripMenuItem
+            // 
+            this.sobreToolStripMenuItem.Name = "sobreToolStripMenuItem";
+            this.sobreToolStripMenuItem.Size = new System.Drawing.Size(49, 20);
+            this.sobreToolStripMenuItem.Text = "Sobre";
+            this.sobreToolStripMenuItem.Click += new System.EventHandler(this.sobreToolStripMenuItem_Click);
+            // 
             // toolStrip1
             // 
             this.toolStrip1.BackColor = System.Drawing.SystemColors.AppWorkspace;
@@ -123,10 +157,12 @@
             // toolStripLabel2
             // 
             this.toolStripLabel2.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.toolStripLabel2.IsLink = true;
             this.toolStripLabel2.Margin = new System.Windows.Forms.Padding(0, 1, 1, 2);
             this.toolStripLabel2.Name = "toolStripLabel2";
-            this.toolStripLabel2.Size = new System.Drawing.Size(267, 22);
-            this.toolStripLabel2.Text = "GitHub: https://github.com/DaviFeitosa21/SysCR";
+            this.toolStripLabel2.Size = new System.Drawing.Size(87, 22);
+            this.toolStripLabel2.Text = "Link do Projeto";
+            this.toolStripLabel2.Click += new System.EventHandler(this.toolStripLabel2_Click);
             // 
             // toolStripButton1
             // 
@@ -146,7 +182,7 @@
             // lblhoras
             // 
             this.lblhoras.AutoSize = true;
-            this.lblhoras.Location = new System.Drawing.Point(694, 558);
+            this.lblhoras.Location = new System.Drawing.Point(873, 558);
             this.lblhoras.Name = "lblhoras";
             this.lblhoras.Size = new System.Drawing.Size(112, 13);
             this.lblhoras.TabIndex = 2;
@@ -155,16 +191,13 @@
             // 
             // timer1
             // 
-            this.timer1.Enabled = global::SysCR.Properties.Settings.Default.True2;
-            this.timer1.Interval = global::SysCR.Properties.Settings.Default.Interval;
+            settings1.Interval = 1000;
+            settings1.SettingsKey = "";
+            settings1.True = false;
+            settings1.True2 = true;
+            this.timer1.Enabled = settings1.True2;
+            this.timer1.Interval = settings1.Interval;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
-            // 
-            // calculadoraToolStripMenuItem
-            // 
-            this.calculadoraToolStripMenuItem.Name = "calculadoraToolStripMenuItem";
-            this.calculadoraToolStripMenuItem.Size = new System.Drawing.Size(82, 20);
-            this.calculadoraToolStripMenuItem.Text = "Calculadora";
-            this.calculadoraToolStripMenuItem.Click += new System.EventHandler(this.calculadoraToolStripMenuItem_Click);
             // 
             // Form1
             // 
@@ -204,6 +237,9 @@
         private System.Windows.Forms.Label lblhoras;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.ToolStripMenuItem calculadoraToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem sobreToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem relatóriosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem relatorioDeClientesToolStripMenuItem;
     }
 }
 
