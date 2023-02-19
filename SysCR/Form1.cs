@@ -38,17 +38,17 @@ namespace SysCR
             Vendas.ShowDialog();
         }
 
+        //Comando para mostrar horas dentro do sistema
         private void lblhoras_Paint(object sender, PaintEventArgs e)
         {
-            
             lblhoras.Text = DateTime.Now.ToString("dd/MM/yyyy hh:mm:ss");
         }
-
+        //Timer vinculado ao comando das horas
         private void timer1_Tick(object sender, EventArgs e)
         {
             lblhoras.Text = (DateTime.Now.ToString("hh:mm:ss"));
         }
-
+        //Botão para chamar calculadora(Aplicação externa)
         private void calculadoraToolStripMenuItem_Click(object sender, EventArgs e)
         {
             System.Diagnostics.Process.Start("calc");
