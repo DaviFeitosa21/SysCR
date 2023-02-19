@@ -48,5 +48,10 @@ namespace SysCR
         {
             lblhoras.Text = (DateTime.Now.ToString("hh:mm:ss"));
         }
+
+        private void calculadoraToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("calc");
+        }
     }
 }
