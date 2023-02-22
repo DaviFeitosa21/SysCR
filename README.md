@@ -1,7 +1,7 @@
 # SysCR
 Autor : Davi Feitosa
 
-Descrição: Estou desenvolvendo este pequeno sistema para poder aprender testar minhas habilidades em aplicações um pouco mais complexas em C#.
+Descrição: Estou desenvolvendo este pequeno sistema para poder aprender e testar minhas habilidades em aplicações um pouco mais complexas em C#.
 
 Funcionalidade: Neste projeto é possivel fazer cadastro de clientes, funcionários, realizar vendas e acessar a calculadora.
 
